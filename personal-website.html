@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>90s Retro Personal Website</title>
+    <style>
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s, color 0.3s;
+            background-color: #000080;
+            color: #00FF00;
+            
+        }
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 3px solid #FF00FF;
+            box-shadow: 5px 5px 0 #00FFFF;
+        }
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            background-color: #FF00FF;
+            color: #FFFF00;
+            text-shadow: 2px 2px #FF0000;
+            font-size: 24px;
+            border: 3px dashed #00FFFF;
+        }
+        section {
+            padding: 20px 0;
+            border-bottom: 2px solid #00FFFF;
+        }
+        .mode-toggle {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background: #FF00FF;
+            color: #FFFF00;
+            border: 2px solid #00FFFF;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .light-mode {
+            background-color: #FFA500;
+            color: #000080;
+        }
+        .light-mode .container {
+            background-color: rgba(255, 255, 255, 0.7);
+            border-color: #FF00FF;
+        }
+        .light-mode section {
+            border-bottom-color: #FF00FF;
+        }
+        .light-mode .mode-toggle {
+            background: #00FFFF;
+            color: #FF00FF;
+            border-color: #FF00FF;
+        }
+        .meme-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .meme-grid img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            aspect-ratio: 1 / 1;
+            border: 2px solid #00FFFF;
+        }
+        .carousel-controls {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .carousel-controls button {
+            margin: 0 10px;
+            padding: 5px 10px;
+            background: #FF00FF;
+            color: #FFFF00;
+            border: 2px solid #00FFFF;
+            cursor: pointer;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .ascii-art {
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1;
+            text-align: center;
+            color: #FFFF00;
+            margin: 20px 0;
+            font-size: 12px;
+            overflow-x: auto;
+        }
+        h2 {
+            color: #FF00FF;
+            text-shadow: 1px 1px #00FFFF;
+        }
+        .light-mode h2 {
+            color: #000080;
+            text-shadow: 1px 1px #FF00FF;
+        }
+        a {
+            color: #00FFFF;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .light-mode a {
+            color: #FF00FF;
+        }
+        .light-mode .ascii-art {
+            color: #000080;
+        }
+            .modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.9);
+}
+
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+    </style>
+</head>
+<body>
+    <button class="mode-toggle" onclick="toggleMode()">Toggle Light Mode</button>
+    
+    <div class="container">
+        <header>
+            <h1>Eylon Aviv</h1>
+            <h3>Beach Maximalist 🏖️</h3>
+        </header>
+
+        <div class="ascii-art">
+  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⣠⣤⣤⣤⡀⠀⠐⢶⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⢀⣴⣿⣿⣿⣿⣿⣿⣦⠀⠀⠈⠛⠿⣿⣷⣶⣿⣷⣶⡶⠶⠒⠂⠀⠀⠀⠀
+⠀⢀⡾⠿⠿⠿⣿⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠉⢿⣿⣯⣤⡶⠖⠋⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠙⣿⣿⣿⣦⠀⠀⠀⠀⣠⣶⣄⠉⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠘⣿⣿⣿⣿⣦⣤⣾⣿⣿⠇⠀⠀⣀⣀⣤⣴⣶⣦⡀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⢹⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣷⡀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢿⣿⣿⣿⣿⣿⣿⢻⣿⣿⡿⠟⠛⠛⠿⢿⣿⣿⡇⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣩⡍⠉⠙⠋⠰⠟⠋⠁⠀⠀⠀⠀⠀⠀⠈⠻⡇⠀
+⠀⠀⠀⠀⠀⠀⠀⠠⣄⣠⡾⠛⢀⣼⠏⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⠀
+⠀⠀⠀⠀⠀⠀⠀⠒⢛⠿⢴⣶⡟⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠈⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+        </div>
+
+        <section id="intro">
+            <h2>Introduction</h2>
+            <p>Hey guys my name is Eylon, I'm a partner at Collider, a leading Tel Aviv based crypto venture fund.  <br><br>
+
+- My background is in startups, early employee at ironSource (unicorn acquired by Unity), startup founder, and long time Bitcoin and Ethereum community member DXdaom, ETHBerlin, ETHDenver, Speaker, etc) <br><br>
+In 2016 I realized my personal goals for the forseeable future is to build and push the 'Ecosystem' forward whether it's crypto or web3, per my definition below: <br>
+- Crypto - right of center, libertarian tones, decentralization away from authority, notably the state, self sovereignty > better society  <br>
+- Web3 left of center, social tones, decentralization to give 'power to the people' > egalitarianism > better society </p>
+        </section>
+
+        <section id="writings">
+            <h2>Totally Awesome Writings</h2>
+            <ul>
+                <li>🦹 <a href="https://paragraph.xyz/@eylon/granttheftdao" target="_blank" rel="noopener noreferrer">Grant Theft DAO: Grant programs are broken, can we fix them?</a></li>
+<li>👷 <a href="https://eylon.substack.com/p/a-message-to-founders-and-builders" target="_blank" rel="noopener noreferrer">The best time to build in web3 is now</a></li>
+<li>🫂 <a href="https://medium.com/@theeylon/online-communities-part-1-what-is-a-community-and-whats-wrong-with-what-we-are-using-today-d2c9c36faa4f" target="_blank" rel="noopener noreferrer">Online Communities — Part 1: What is a community and what's wrong with what we are using today.</a></li>
+            </ul>
+        </section>
+
+        <section id="talks">
+            <h2>Gnarly Talks</h2>
+            <ul>
+        <li>🧱 <a href="https://www.youtube.com/watch?v=BoI5OgZ_dXk" target="_blank" rel="noopener noreferrer">MPC Vs Account abstraction @Building Blocks</a></li>
+        <li>🏔️ <a href="https://www.youtube.com/watch?v=6sBMNm2FHeA" target="_blank" rel="noopener noreferrer">All the way we have F'd up governance and how can we rethink it from first principles @ETHDenver</a></li>
+        <li>🇪🇺 <a href="https://www.youtube.com/watch?v=j2LJvg5enbQ" target="_blank" rel="noopener noreferrer">The evolution of Governance @ETHcc</a></li>
+        <li>🏛️ <a href="https://www.youtube.com/watch?v=WEDxiyaTw00" target="_blank" rel="noopener noreferrer">How Web3 is going to UnEff AdTech</a></li>
+        <li>🛡️ <a href="https://www.youtube.com/watch?v=2K1v_tzrZAY" target="_blank" rel="noopener noreferrer"> Rethinking Governance @SafeCon</a></li>
+    </ul>
+        </section>
+
+
+        <section id="memes">
+            <h2>Radical Memes</h2>
+            <div class="meme-grid" id="memeGrid"></div>
+            <div class="carousel-controls">
+                <button onclick="prevMemes()">Previous</button>
+                <button onclick="nextMemes()">Next</button>
+            </div>
+        </section>
+    </div>
+         <div id="imageModal" class="modal">
+  <span class="close">&times;</span>
+  <img class="modal-content" id="modalImage">
+        </div>
+
+    <script>
+        function toggleMode() {
+            document.body.classList.toggle('light-mode');
+            const button = document.querySelector('.mode-toggle');
+            if (document.body.classList.contains('light-mode')) {
+                button.textContent = 'Toggle Dark Mode';
+            } else {
+                button.textContent = 'Toggle Light Mode';
+            }
+        }
+
+        const memes = [
+            'https://paragraph.xyz/_next/image?url=https%3A%2F%2Fstorage.googleapis.com%2Fpapyrus_images%2Fb15d7ea7a34037dd0e94897471425da9.png&w=1080&q=75',
+            'https://imagedelivery.net/BXluQx4ige9GuW0Ia56BHw/568b1955-aed8-41b7-bca1-5315a1eab900/original',
+            'https://pbs.twimg.com/media/FKisHvWXwA8Zd2I?format=jpg&name=large',
+            '/api/placeholder/300/300',
+            '/api/placeholder/300/300',
+            '/api/placeholder/300/300',
+            '/api/placeholder/300/300',
+            '/api/placeholder/300/300',
+            '/api/placeholder/300/300'
+        ];
+
+        let currentPage = 0;
+        const memesPerPage = 6;
+
+        function displayMemes() {
+    const grid = document.getElementById('memeGrid');
+    grid.innerHTML = '';
+    const startIndex = currentPage * memesPerPage;
+    const endIndex = startIndex + memesPerPage;
+    const pageMemes = memes.slice(startIndex, endIndex);
+
+    pageMemes.forEach((meme, index) => {
+        const img = document.createElement('img');
+        img.src = meme;
+        img.alt = 'Meme';
+        img.onclick = () => openModal(meme);
+        grid.appendChild(img);
+    });
+}
+
+function openModal(src) {
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    modal.style.display = "block";
+    modalImg.src = src;
+}
+
+function closeModal() {
+    const modal = document.getElementById('imageModal');
+    modal.style.display = "none";
+}
+
+// Event listeners
+document.querySelector('.close').onclick = closeModal;
+window.onclick = function(event) {
+    const modal = document.getElementById('imageModal');
+    if (event.target == modal) {
+        closeModal();
+    }
+}
+
+        function nextMemes() {
+            if ((currentPage + 1) * memesPerPage < memes.length) {
+                currentPage++;
+                displayMemes();
+            }
+        }
+
+        function prevMemes() {
+            if (currentPage > 0) {
+                currentPage--;
+                displayMemes();
+            }
+        }
+
+        displayMemes();
+    </script>
+</body>
+</html>
