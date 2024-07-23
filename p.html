@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>90s Retro Personal Website</title>
+    <title>Eylon's Website</title>
     <style>
         body {
             font-family: 'Courier New', Courier, monospace;
@@ -160,6 +161,114 @@
   text-decoration: none;
   cursor: pointer;
 }
+        .quote-block {
+  background-color: #2b2b2b;
+  border-left: 4px solid #00FFFF;
+  margin: 20px 0;
+  padding: 15px;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+}
+
+.quote-block {
+  margin: 20px auto;
+  padding: 15px;
+  border-radius: 0 5px 5px 0;
+  box-shadow: 2px 2px 5px rgba(0,0,0,0.3);
+  max-width: 80%;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
+}
+
+body:not(.light-mode) .quote-block {
+  background-color: #2b2b2b;
+  border-left: 4px solid #00FFFF;
+}
+
+.light-mode .quote-block {
+  background-color: #f0f0f0;
+  border-left: 4px solid #FF00FF;
+}
+
+.quote-block pre {
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.quote-block code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 1em;
+  line-height: 1.4;
+  display: inline-block;
+  text-align: left;
+  transition: color 0.3s;
+}
+
+body:not(.light-mode) .quote-block code {
+  color: #00FF00;
+}
+
+.light-mode .quote-block code {
+  color: #000080;
+}
+.social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    margin-bottom: 20px;
+}
+
+.social-icon {
+    color: #FFFFFF;
+    font-size: 24px;
+    transition: color 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+}
+
+.social-icon:hover {
+    color: #00FFFF;
+}
+.farcaster-icon {
+    font-weight: bold;
+    font-style: normal;
+    font-family: 'Arial', sans-serif;
+    font-size: 25px; /* Adjust this value to match other icons */
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+}
+
+.light-mode .social-bar {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.light-mode .social-icon {
+    color: #000080;
+}
+
+.light-mode .social-icon:hover {
+    color: #FF00FF;
+}
+
+/* Specific colors for each social media (optional) */
+.twitter:hover { color: #1DA1F2; }
+.github:hover { color: #6e5494; }
+.linkedin:hover { color: #0077B5; }
+.farcaster:hover { color: #8A63D2; }
     </style>
 </head>
 <body>
@@ -169,6 +278,25 @@
         <header>
             <h1>Eylon Aviv</h1>
             <h3>Beach Maximalist 🏖️</h3>
+            <div class="quote-block">
+  <pre><code>"Ideology is the mistaken belief
+that your beliefs are neither beliefs nor mistaken"</code></pre>
+
+</div>
+<div class="social-bar">
+    <a href="https://twitter.com/TheEylon" target="_blank" rel="noopener noreferrer" class="social-icon twitter">
+        <i class="fab fa-twitter"></i>
+    </a>
+    <a href="https://github.com/Theylon" target="_blank" rel="noopener noreferrer" class="social-icon github">
+        <i class="fab fa-github"></i>
+    </a>
+    <a href="https://www.linkedin.com/in/eylonaviv/" target="_blank" rel="noopener noreferrer" class="social-icon linkedin">
+        <i class="fab fa-linkedin"></i>
+    </a>
+    <a href="https://warpcast.com/eylon" target="_blank" rel="noopener noreferrer" class="social-icon farcaster">
+        <span class="farcaster-icon">W</span>
+    </a>
+</div>
         </header>
 
         <div class="ascii-art">
@@ -190,14 +318,24 @@
         </div>
 
         <section id="intro">
-            <h2>Introduction</h2>
-            <p>Hey guys my name is Eylon, I'm a partner at Collider, a leading Tel Aviv based crypto venture fund.  <br><br>
+            <h2>Intro</h2>
+           <p>Hey guys my name is Eylon, I'm a partner at <a href="https://Collider.vc" target="_blank" rel="noopener noreferrer">Collider</a>, The leading Tel Aviv based crypto/web3 venture fund.  <br><br>
 
-- My background is in startups, early employee at ironSource (unicorn acquired by Unity), startup founder, and long time Bitcoin and Ethereum community member DXdaom, ETHBerlin, ETHDenver, Speaker, etc) <br><br>
-In 2016 I realized my personal goals for the forseeable future is to build and push the 'Ecosystem' forward whether it's crypto or web3, per my definition below: <br>
-- Crypto - right of center, libertarian tones, decentralization away from authority, notably the state, self sovereignty > better society  <br>
-- Web3 left of center, social tones, decentralization to give 'power to the people' > egalitarianism > better society </p>
-        </section>
+<p>My background is in startups. I was an early employee at ironSource (a unicorn acquired by Unity) and a founder (Comon.io, dHack). I'm also a long-time Bitcoin and Ethereum community member and contributor (DXdao, ETHBerlin, ETHDenver).</p>
+
+            <p>They also let me speak at conferences from time to time.</p>
+
+            <p>In 2016, I realized my personal goal for the foreseeable future is to build and push the 'Ecosystem' forward, whether it's crypto or Web3. Here's how I define them:</p>
+
+            <ul>
+                <li>
+                    <strong>Crypto:</strong> Right of center, libertarian tones. Decentralization away from authority, notably the state. Self-sovereignty leads to a better society.
+                </li>
+                <li>
+                    <strong>Web3:</strong> Left of center, social tones. Decentralization to give 'power to the people'. Egalitarianism leads to a better society.
+                </li>
+            </ul>
+        
 
         <section id="writings">
             <h2>Totally Awesome Writings</h2>
@@ -209,7 +347,7 @@ In 2016 I realized my personal goals for the forseeable future is to build and p
         </section>
 
         <section id="talks">
-            <h2>Gnarly Talks</h2>
+            <h2>Amazing Talks</h2>
             <ul>
         <li>🧱 <a href="https://www.youtube.com/watch?v=BoI5OgZ_dXk" target="_blank" rel="noopener noreferrer">MPC Vs Account abstraction @Building Blocks</a></li>
         <li>🏔️ <a href="https://www.youtube.com/watch?v=6sBMNm2FHeA" target="_blank" rel="noopener noreferrer">All the way we have F'd up governance and how can we rethink it from first principles @ETHDenver</a></li>
